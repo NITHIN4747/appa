@@ -907,22 +907,22 @@ img {
   }
 
   .hero-img {
-    right: -5%;
+    right: 0;
     bottom: 0;
-    height: 56vh;
-    max-height: 480px;
+    height: 66vh;
+    max-height: 600px;
     width: auto;
-    max-width: 75vw;
-    opacity: 0.22;
+    max-width: 85vw;
+    opacity: 0.85;
     object-position: bottom right;
-    filter: brightness(0.85) contrast(1.1) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9));
+    filter: brightness(0.98) contrast(1.06) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9));
     pointer-events: none;
   }
 
   .hero-overlay {
     background:
-      linear-gradient(to top, rgba(9,7,12,0.98) 0%, rgba(9,7,12,0.85) 45%, rgba(9,7,12,0.55) 100%),
-      linear-gradient(to right, rgba(9,7,12,0.98) 0%, rgba(9,7,12,0.82) 65%, transparent 100%);
+      linear-gradient(to top, rgba(9,7,12,0.85) 0%, transparent 22%),
+      linear-gradient(to right, rgba(9,7,12,0.92) 0%, rgba(9,7,12,0.68) 42%, rgba(9,7,12,0.18) 78%, transparent 100%);
   }
 
   .hero-narrative-container {
@@ -951,17 +951,20 @@ img {
     font-size: clamp(1.6rem, 5.8vw, 2.3rem);
     line-height: 1.38;
     margin-bottom: 1.1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 4px 25px rgba(0, 0, 0, 0.9);
   }
 
   .tamil-headline-sm {
     font-size: clamp(1.3rem, 4.6vw, 1.75rem);
     line-height: 1.35;
     margin-bottom: 0.85rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
   }
 
   .tamil-punchline {
     font-size: clamp(1.05rem, 3.8vw, 1.35rem);
     line-height: 1.5;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
   }
 
   /* Stats Box on Mobile */
@@ -1090,12 +1093,13 @@ img {
 /* Small Smart Phones (<= 480px) */
 @media (max-width: 480px) {
   .hero-img {
-    right: -8%;
+    right: 0;
     bottom: 0;
-    height: 48vh;
-    max-width: 76vw;
-    opacity: 0.16;
-    filter: brightness(0.8) contrast(1.1);
+    height: 62vh;
+    max-height: 540px;
+    max-width: 90vw;
+    opacity: 0.85;
+    filter: brightness(0.98) contrast(1.06) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9));
     pointer-events: none;
   }
 
@@ -1169,7 +1173,7 @@ img {
 @media (max-height: 600px) {
   .hero-img {
     height: 75vh;
-    opacity: 0.35;
+    opacity: 0.75;
   }
 
   .tamil-headline {
