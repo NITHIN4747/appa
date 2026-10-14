@@ -770,23 +770,27 @@ img {
 }
 
 /* ════════════════════════════════════════════
-   LINE-BY-LINE SCROLL REVEAL ANIMATION
+   LINE-BY-LINE SCROLL REVEAL ANIMATION (CRISP & VISIBLE)
    ════════════════════════════════════════════ */
 .scroll-reveal-line {
-  opacity: 0.18;
-  transform: translateY(22px);
-  filter: blur(2.5px);
+  opacity: 0.82;
+  transform: translateY(0);
+  filter: none;
   transition:
-    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, color;
 }
 
 .scroll-reveal-line.is-revealed {
   opacity: 1;
+  color: #ffffff;
   transform: translateY(0);
-  filter: blur(0);
+}
+
+.scroll-reveal-line.is-revealed .kav-pill {
+  box-shadow: 0 4px 18px rgba(228, 184, 98, 0.35);
 }
 
 .kavithai-line {
@@ -1382,8 +1386,9 @@ img {
   }
 
   .scroll-reveal-line {
-    transform: translateY(14px);
-    filter: blur(1.5px);
+    transform: translateY(0);
+    filter: none;
+    opacity: 0.88;
   }
 
   .kavithai-editorial-article {

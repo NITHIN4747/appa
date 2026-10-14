@@ -350,8 +350,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ── 7. DYNAMIC LIFETIME STATS CALCULATOR ───────
-// Birthdate: October 14, 1974 (1974-10-14 00:00:00)
-const birthDate = new Date(1974, 9, 14, 0, 0, 0);
+// Birthdate: October 15, 1974 (1974-10-15 00:00:00)
+const birthDate = new Date(1974, 9, 15, 0, 0, 0);
 
 function updateDynamicAge() {
   const now = new Date();
@@ -602,11 +602,14 @@ if (postalStage) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         postalStage.classList.add('is-open');
+        if (scrollRevealLines.length > 0) {
+          scrollRevealLines[0].classList.add('is-revealed');
+        }
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -20px 0px'
   });
 
   envelopeObserver.observe(postalStage);
@@ -616,6 +619,9 @@ if (postalStage) {
     waxSeal.addEventListener('click', (e) => {
       e.stopPropagation();
       postalStage.classList.toggle('is-open');
+      if (scrollRevealLines.length > 0) {
+        scrollRevealLines[0].classList.add('is-revealed');
+      }
     });
   }
 }
@@ -629,8 +635,8 @@ if (scrollRevealLines.length > 0) {
       }
     });
   }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -10% 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -5% 0px'
   });
 
   scrollRevealLines.forEach(line => lineObserver.observe(line));
@@ -641,7 +647,7 @@ if (scrollRevealLines.length > 0) {
     const vh = window.innerHeight;
     scrollRevealLines.forEach(line => {
       const rect = line.getBoundingClientRect();
-      if (rect.top < vh * 0.84) {
+      if (rect.top < vh * 0.90) {
         line.classList.add('is-revealed');
       }
     });
