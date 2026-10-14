@@ -770,27 +770,52 @@ img {
 }
 
 /* ════════════════════════════════════════════
-   LINE-BY-LINE SCROLL REVEAL ANIMATION (CRISP & VISIBLE)
+   MASK TEXT REVEAL (ORIGINKIT CLIP-PATH MASK)
+   Direction: Center (Horizontal)
+   Color: #FFFFFF
+   Transition: Smooth Native Clip-Path Inset Sweep
    ════════════════════════════════════════════ */
-.scroll-reveal-line {
-  opacity: 0.82;
-  transform: translateY(0);
+.mask-text-reveal {
+  position: relative;
+  display: block;
+  /* Sweeps from center horizontally: masked left 50% and right 50% */
+  clip-path: inset(0 50% 0 50%);
+  opacity: 0.08;
+  transform: translateY(6px);
   filter: none;
   transition:
-    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, color;
+    clip-path 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.4s ease;
+  will-change: clip-path, opacity, transform;
 }
 
-.scroll-reveal-line.is-revealed {
+.mask-text-reveal.is-revealed {
+  clip-path: inset(0 0% 0 0%);
   opacity: 1;
   color: #ffffff;
   transform: translateY(0);
 }
 
-.scroll-reveal-line.is-revealed .kav-pill {
+.mask-text-reveal.is-fully-revealed {
+  clip-path: none !important;
+}
+
+.mask-text-reveal.is-revealed .kav-pill {
   box-shadow: 0 4px 18px rgba(228, 184, 98, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-text-reveal {
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+.scroll-reveal-line {
+  filter: none;
 }
 
 .kavithai-line {

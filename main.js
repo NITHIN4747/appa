@@ -603,7 +603,7 @@ if (postalStage) {
       if (entry.isIntersecting) {
         postalStage.classList.add('is-open');
         if (scrollRevealLines.length > 0) {
-          scrollRevealLines[0].classList.add('is-revealed');
+          triggerMaskReveal(scrollRevealLines[0]);
         }
       }
     });
@@ -620,18 +620,26 @@ if (postalStage) {
       e.stopPropagation();
       postalStage.classList.toggle('is-open');
       if (scrollRevealLines.length > 0) {
-        scrollRevealLines[0].classList.add('is-revealed');
+        triggerMaskReveal(scrollRevealLines[0]);
       }
     });
   }
 }
 
-// 2. Line-by-Line Scroll Reveal for Kavithai Verses
+// 2. Line-by-Line Mask Text Reveal for Kavithai Verses (OriginKit clip-path sweep)
+function triggerMaskReveal(line) {
+  if (!line || line.classList.contains('is-revealed')) return;
+  line.classList.add('is-revealed');
+  setTimeout(() => {
+    line.classList.add('is-fully-revealed');
+  }, 1250);
+}
+
 if (scrollRevealLines.length > 0) {
   const lineObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-revealed');
+        triggerMaskReveal(entry.target);
       }
     });
   }, {
@@ -641,14 +649,14 @@ if (scrollRevealLines.length > 0) {
 
   scrollRevealLines.forEach(line => lineObserver.observe(line));
 
-  // Dynamic scroll listener ensures lines illuminate smoothly as user reads down
+  // Dynamic scroll listener ensures lines sweep open smoothly as user reads down
   let lineScrollTicking = false;
   function updateLinesOnScroll() {
     const vh = window.innerHeight;
     scrollRevealLines.forEach(line => {
       const rect = line.getBoundingClientRect();
       if (rect.top < vh * 0.90) {
-        line.classList.add('is-revealed');
+        triggerMaskReveal(line);
       }
     });
     lineScrollTicking = false;
