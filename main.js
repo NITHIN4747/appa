@@ -589,3 +589,72 @@ if (audioToggleBtn) {
     }
   });
 }
+
+// ── 10. POSTAL ENVELOPE & LINE-BY-LINE SCROLL REVEAL ──
+const postalStage = document.getElementById('postalStage');
+const envelopeFlap = document.getElementById('envelopeFlap');
+const waxSeal = document.getElementById('waxSeal');
+const scrollRevealLines = document.querySelectorAll('.scroll-reveal-line');
+
+// 1. Envelope Unsealing & Letter Emerge Trigger
+if (postalStage) {
+  const envelopeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        postalStage.classList.add('is-open');
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  envelopeObserver.observe(postalStage);
+
+  // Click on wax seal or post cover also opens/toggles with tactile response
+  if (waxSeal) {
+    waxSeal.addEventListener('click', (e) => {
+      e.stopPropagation();
+      postalStage.classList.toggle('is-open');
+    });
+  }
+}
+
+// 2. Line-by-Line Scroll Reveal for Kavithai Verses
+if (scrollRevealLines.length > 0) {
+  const lineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -10% 0px'
+  });
+
+  scrollRevealLines.forEach(line => lineObserver.observe(line));
+
+  // Dynamic scroll listener ensures lines illuminate smoothly as user reads down
+  let lineScrollTicking = false;
+  function updateLinesOnScroll() {
+    const vh = window.innerHeight;
+    scrollRevealLines.forEach(line => {
+      const rect = line.getBoundingClientRect();
+      if (rect.top < vh * 0.84) {
+        line.classList.add('is-revealed');
+      }
+    });
+    lineScrollTicking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!lineScrollTicking) {
+      requestAnimationFrame(updateLinesOnScroll);
+      lineScrollTicking = true;
+    }
+  }, { passive: true });
+
+  // Initial check
+  setTimeout(updateLinesOnScroll, 100);
+}
