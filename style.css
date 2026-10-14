@@ -907,21 +907,22 @@ img {
   }
 
   .hero-img {
-    right: -10%;
+    right: -5%;
     bottom: 0;
-    height: 58vh;
-    max-height: 520px;
+    height: 56vh;
+    max-height: 480px;
     width: auto;
-    max-width: 80vw;
-    opacity: 0.52;
+    max-width: 75vw;
+    opacity: 0.22;
     object-position: bottom right;
-    filter: brightness(0.92) contrast(1.05) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+    filter: brightness(0.85) contrast(1.1) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9));
+    pointer-events: none;
   }
 
   .hero-overlay {
     background:
-      linear-gradient(to top, rgba(9,7,12,0.98) 0%, rgba(9,7,12,0.72) 48%, rgba(9,7,12,0.35) 100%),
-      linear-gradient(to right, rgba(9,7,12,0.95) 0%, rgba(9,7,12,0.7) 65%, transparent 100%);
+      linear-gradient(to top, rgba(9,7,12,0.98) 0%, rgba(9,7,12,0.85) 45%, rgba(9,7,12,0.55) 100%),
+      linear-gradient(to right, rgba(9,7,12,0.98) 0%, rgba(9,7,12,0.82) 65%, transparent 100%);
   }
 
   .hero-narrative-container {
@@ -1089,10 +1090,13 @@ img {
 /* Small Smart Phones (<= 480px) */
 @media (max-width: 480px) {
   .hero-img {
-    right: -15%;
-    height: 50vh;
-    max-width: 82vw;
-    opacity: 0.42;
+    right: -8%;
+    bottom: 0;
+    height: 48vh;
+    max-width: 76vw;
+    opacity: 0.16;
+    filter: brightness(0.8) contrast(1.1);
+    pointer-events: none;
   }
 
   .hero-narrative-container {
