@@ -1,0 +1,9 @@
+{
+  "name": "appa-birthday-tribute",
+  "version": "1.0.0",
+  "description": "Royal Tamil Birthday Tribute Website for Appa",
+  "scripts": {
+    "start": "python3 -m http.server 8765",
+    "dev": "python3 -m http.server 8765"
+  }
+}
